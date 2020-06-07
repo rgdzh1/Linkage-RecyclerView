@@ -56,6 +56,10 @@ public class LinkagePrimaryAdapter extends RecyclerView.Adapter<LinkagePrimaryVi
         return mSelectedPosition;
     }
 
+    /**
+     * 更新选中item
+     * @param selectedPosition
+     */
     public void setSelectedPosition(int selectedPosition) {
         mSelectedPosition = selectedPosition;
         notifyDataSetChanged();

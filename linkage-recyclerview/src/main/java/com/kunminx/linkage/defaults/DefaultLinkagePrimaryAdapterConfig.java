@@ -48,17 +48,17 @@ public class DefaultLinkagePrimaryAdapterConfig implements ILinkagePrimaryAdapte
     public void setContext(Context context) {
         mContext = context;
     }
-
+    // 返回主Rv中的item布局
     @Override
     public int getLayoutId() {
         return R.layout.default_adapter_linkage_primary;
     }
-
+    // 主主Rv中item的显示组名称的TextViewid
     @Override
     public int getGroupTitleViewId() {
         return R.id.tv_group;
     }
-
+    // 主Rv中item最外层布局id
     @Override
     public int getRootViewId() {
         return R.id.layout_group;

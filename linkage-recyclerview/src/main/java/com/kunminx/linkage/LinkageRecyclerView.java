@@ -65,9 +65,9 @@ public class LinkageRecyclerView<T extends BaseGroupedItem.ItemInfo> extends Rel
 
     private LinkagePrimaryAdapter mPrimaryAdapter;
     private LinkageSecondaryAdapter mSecondaryAdapter;
+    private FrameLayout mHeaderContainer;
     // 次Rv悬挂头View,专门展示组名用
     private TextView mTvHeader;
-    private FrameLayout mHeaderContainer;
     // 组名称集合
     private List<String> mInitGroupNames;
     // 原始数据集合
@@ -78,6 +78,7 @@ public class LinkageRecyclerView<T extends BaseGroupedItem.ItemInfo> extends Rel
     private int mTitleHeight;
     // 屏幕中次Rv屏幕中第一个可见条目在数据源中的索引.
     private int mFirstVisiblePosition;
+    // 上一次在悬挂头View中的名称
     private String mLastGroupName;
     private LinearLayoutManager mSecondaryLayoutManager;
     private LinearLayoutManager mPrimaryLayoutManager;
@@ -185,8 +186,6 @@ public class LinkageRecyclerView<T extends BaseGroupedItem.ItemInfo> extends Rel
      * 次Rv悬挂滑动,并且关联上主Rv滑动到相应的组名条目
      */
     private void initLinkageSecondary() {
-
-
         if (mTvHeader == null && mSecondaryAdapter.getConfig() != null) {
             // 获取次要适配器DefaultLinkageSecondaryAdapterConfig对象
             ILinkageSecondaryAdapterConfig config = mSecondaryAdapter.getConfig();
