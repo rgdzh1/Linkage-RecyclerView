@@ -41,13 +41,14 @@ import java.util.List;
 public class LinkageSecondaryAdapter<T extends BaseGroupedItem.ItemInfo> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
+    // 原始数据集合
     private List<BaseGroupedItem<T>> mItems;
     private static final int IS_HEADER = 0;
     private static final int IS_LINEAR = 1;
     private static final int IS_GRID = 2;
     private static final int IS_FOOTER = 3;
     private boolean mIsGridMode;
-
+    // DefaultLinkageSecondaryAdapterConfig对象
     private ILinkageSecondaryAdapterConfig mConfig;
 
     public ILinkageSecondaryAdapterConfig getConfig() {
@@ -67,13 +68,18 @@ public class LinkageSecondaryAdapter<T extends BaseGroupedItem.ItemInfo> extends
     }
 
     public LinkageSecondaryAdapter(List<BaseGroupedItem<T>> items, ILinkageSecondaryAdapterConfig config) {
-        mItems = items;
+        mItems = items;// 原始数据集合
         if (mItems == null) {
             mItems = new ArrayList<>();
         }
+        // DefaultLinkageSecondaryAdapterConfig对象
         mConfig = config;
     }
 
+    /**
+     * 更新数据
+     * @param list
+     */
     public void initData(List<BaseGroupedItem<T>> list) {
         mItems.clear();
         if (list != null) {

@@ -27,20 +27,29 @@ import androidx.recyclerview.widget.RecyclerView;
  * Create by KunMinX at 19/5/15
  */
 public class RecyclerViewScrollHelper {
-
+    /**
+     *
+     * @param recyclerView
+     * @param snapMode 条目置顶还是置底
+     * @param position 某条目置顶或置底
+     */
     public static void smoothScrollToPosition(RecyclerView recyclerView, int snapMode, int position) {
         RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
         if (layoutManager instanceof LinearLayoutManager) {
             LinearLayoutManager manager = (LinearLayoutManager) layoutManager;
             LinearSmoothScroller mScroller = null;
             if (snapMode == LinearSmoothScroller.SNAP_TO_START) {
+                // 滑动、跳转到某个Position并置顶
                 mScroller = new TopSmoothScroller(recyclerView.getContext());
             } else if (snapMode == LinearSmoothScroller.SNAP_TO_END) {
+                // 滑动、跳转到某个Position并置底
                 mScroller = new BottomSmoothScroller(recyclerView.getContext());
             } else {
+                // 平滑滑动、跳转到某个Position
                 mScroller = new LinearSmoothScroller(recyclerView.getContext());
             }
             mScroller.setTargetPosition(position);
+            // 平滑滑动开始
             manager.startSmoothScroll(mScroller);
         }
     }

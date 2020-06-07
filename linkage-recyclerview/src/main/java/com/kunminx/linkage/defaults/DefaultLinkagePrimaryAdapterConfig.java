@@ -64,16 +64,30 @@ public class DefaultLinkagePrimaryAdapterConfig implements ILinkagePrimaryAdapte
         return R.id.layout_group;
     }
 
+    /***
+     * 该方法主要是对组名View进行一些列的设置
+     * @param holder   LinkagePrimaryViewHolder 用来获取组名View
+     * @param selected selected of this position 当前组名View是否被选中
+     * @param title    title of this position 组的名称
+     */
     @Override
     public void onBindViewHolder(LinkagePrimaryViewHolder holder, boolean selected, String title) {
+        // 获取组名View
         TextView tvTitle = ((TextView) holder.mGroupTitle);
+        // 为组名View设置组的名称
         tvTitle.setText(title);
 
+        // 设置组名View是否选中的相应背景
         tvTitle.setBackgroundColor(mContext.getResources().getColor(selected ? R.color.colorPurple : R.color.colorWhite));
+        // 设置组名View是否选中的相应字体颜色
         tvTitle.setTextColor(ContextCompat.getColor(mContext, selected ? R.color.colorWhite : R.color.colorGray));
+        // 设置组名View如果没有被选中则组名称文字末尾省略号,如果被选中了就跑马灯展示
         tvTitle.setEllipsize(selected ? TextUtils.TruncateAt.MARQUEE : TextUtils.TruncateAt.END);
+        // 设置视图是否可以获取焦点
         tvTitle.setFocusable(selected);
+        // 设置视图可否获取焦点并保持焦点
         tvTitle.setFocusableInTouchMode(selected);
+        // 设置组名View被选中了可以重复动画选框,如果没有被选中则不能有动画.
         tvTitle.setMarqueeRepeatLimit(selected ? MARQUEE_REPEAT_LOOP_MODE : MARQUEE_REPEAT_NONE_MODE);
 
         if (mListener != null) {
